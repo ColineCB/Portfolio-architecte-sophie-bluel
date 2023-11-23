@@ -52,18 +52,18 @@ fetch (apiCategories)
     })
     .then (categories => {
         console.log(categories);
+        let btnTous = document.createElement("button");
+        btnTous.innerHTML = "Tous";
+        btnTous.classList.add("btn");
+        divBtnFiltres.appendChild(btnTous); 
+        console.log(btnTous);
         for (const categorie of categories) {
             const btn = document.createElement("button");
             btn.textContent = categorie.name;
+            btn.classList.add("btn");
             divBtnFiltres.appendChild(btn);
         }
     })
     .catch(error => {
         console.error ("Erreur de fetch pour les boutons", error);
     });
-
-// Création du quatrième bouton "Tous", situé en premier dans la liste des quatre boutons
-let btnTous = document.createElement("button");
-btnTous.innerHTML = "Tous";
-divBtnFiltres.appendChild(btnTous); 
-console.log(btnTous);
