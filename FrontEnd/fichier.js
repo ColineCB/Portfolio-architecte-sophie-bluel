@@ -54,16 +54,40 @@ fetch (apiCategories)
         console.log(categories);
         let btnTous = document.createElement("button");
         btnTous.innerHTML = "Tous";
-        btnTous.classList.add("btn");
+        btnTous.classList.add("btns");
         divBtnFiltres.appendChild(btnTous); 
         console.log(btnTous);
         for (const categorie of categories) {
             const btn = document.createElement("button");
             btn.textContent = categorie.name;
-            btn.classList.add("btn");
+            btn.classList.add("btns");
             divBtnFiltres.appendChild(btn);
         }
     })
     .catch(error => {
         console.error ("Erreur de fetch pour les boutons", error);
     });
+
+// gestion du filtrage des boutons : en Test (ne fonctionne pas actuellement)
+const btns = document.querySelectorAll(".btns");
+
+btns.forEach (btn => {
+    switch (btn.id) {
+        case "btn1":
+            btn.setAttribute("data-category", "1");
+            break;
+        case "btn2":
+            btn.setAttribute("data-category", "2");
+            break;
+        case "btn3":
+            btn.setAttribute("data-category", "3");
+            break;   
+    }
+    btn.addEventListener ("click", function () {
+        const categoryId = btn.dataset.category;
+        const projectsFiltres = projects.filter (function (project) {
+            return project.categoryId === parseInt(categoryId);
+        });
+        console.log(projectsFiltres);
+    });
+});

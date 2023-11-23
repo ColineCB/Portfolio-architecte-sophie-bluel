@@ -136,19 +136,19 @@ li:hover {
 	justify-content: center;
 }
 
-.btn {
+.btns {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 20px;
 	color: #1D6154;
-	border: #1D6154 1px solid;
+	border: #1D6154 2px solid;
 	border-radius: 30px;
 	margin: 10px;
 	padding: 10px 15px;
 	background-color: white;
 }
 
-.btn:hover {
+.btns:hover {
 	background-color: #1D6154;
 	color: white;
 }
