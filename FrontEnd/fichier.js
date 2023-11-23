@@ -64,4 +64,6 @@ fetch (apiCategories)
 
 // Création du quatrième bouton "Tous", situé en premier dans la liste des quatre boutons
 let btnTous = document.createElement("button");
+btnTous.innerHTML = "Tous";
 divBtnFiltres.appendChild(btnTous); 
+console.log(btnTous);
