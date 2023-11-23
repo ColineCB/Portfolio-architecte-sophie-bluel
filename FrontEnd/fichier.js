@@ -61,33 +61,46 @@ fetch (apiCategories)
             const btn = document.createElement("button");
             btn.textContent = categorie.name;
             btn.classList.add("btns");
+            btn.setAttribute("data-category", categorie.id);
             divBtnFiltres.appendChild(btn);
         }
+        
+        /* gestion du filtrage des boutons : ne fonctionne pas encore
+        
+        const btns = document.querySelectorAll(".btns");
+
+        btns.forEach (btn => {
+            btn.addEventListener ("click", function () {
+                const categoryId = btn.dataset.category;
+                console.log(categoryId);
+                const projectsFiltres = projects.filter (function (project) {
+                    return project.categoryId === parseInt(categoryId);
+                });
+                console.log(projectsFiltres);
+            });
+        });
+
+        */
+
     })
     .catch(error => {
         console.error ("Erreur de fetch pour les boutons", error);
     });
 
+
+    /*
 // gestion du filtrage des boutons : en Test (ne fonctionne pas actuellement)
 const btns = document.querySelectorAll(".btns");
 
 btns.forEach (btn => {
-    switch (btn.id) {
-        case "btn1":
-            btn.setAttribute("data-category", "1");
-            break;
-        case "btn2":
-            btn.setAttribute("data-category", "2");
-            break;
-        case "btn3":
-            btn.setAttribute("data-category", "3");
-            break;   
-    }
     btn.addEventListener ("click", function () {
         const categoryId = btn.dataset.category;
+        console.log(categoryId);
         const projectsFiltres = projects.filter (function (project) {
             return project.categoryId === parseInt(categoryId);
         });
         console.log(projectsFiltres);
     });
 });
+
+*/
