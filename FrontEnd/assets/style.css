@@ -131,6 +131,8 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+/** ajout de la div contenant les boutons filtres et des boutons eux-mêmes **/ 
+
 .div-Btn-Filtres {
 	display: flex;
 	justify-content: center;
@@ -153,6 +155,10 @@ li:hover {
 	color: white;
 }
 
+/** fin de l'ajout perso **/
+
+/** début gestion galerie **/ 
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -165,17 +171,31 @@ li:hover {
 	width: 100%;
 
 }
+
+.figure {
+	display: block;
+}
+
+.hidden {
+	display:none; 
+}
+
+/** fin de la gestion de la gallerie **/ 
+
 #contact {
 	width: 50%;
 margin: auto;
 }
+
 #contact > * {
 	text-align: center;
 
 }
+
 #contact h2{
 	margin-bottom: 20px;
 }
+
 #contact form {
 	text-align: left;
 	margin-top:30px;
@@ -189,9 +209,11 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);

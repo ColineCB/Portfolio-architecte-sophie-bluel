@@ -16,6 +16,9 @@ fetch (apiUrl)
             let figure = document.createElement("figure");
             gallery.appendChild(figure);
 
+            figure.classList.add("figure");
+            figure.setAttribute("data-categoryId", project.categoryId);
+
             let img = document.createElement("img");
             img.src = project.imageUrl;
             figure.appendChild(img);
@@ -42,7 +45,7 @@ if (titreH2) {
     console.error("Titre h2 non trouvé");
 };
 
-// affichage dynamique des trois boutons dans la divBtnFiltres
+// affichage dynamique du bouton "Tous" et des trois boutons dans la divBtnFiltres
 fetch (apiCategories)
     .then (response => {
         if (!response.ok) {
@@ -56,51 +59,33 @@ fetch (apiCategories)
         btnTous.innerHTML = "Tous";
         btnTous.classList.add("btns");
         divBtnFiltres.appendChild(btnTous); 
-        console.log(btnTous);
         for (const categorie of categories) {
             const btn = document.createElement("button");
             btn.textContent = categorie.name;
             btn.classList.add("btns");
-            btn.setAttribute("data-category", categorie.id);
+            btn.setAttribute("data-categoryId", categorie.id);
             divBtnFiltres.appendChild(btn);
         }
         
-        /* gestion du filtrage des boutons : ne fonctionne pas encore
-        
-        const btns = document.querySelectorAll(".btns");
+        // gestion du filtrage des boutons : ne fonctionne pas encore
+        const boutons = document.querySelectorAll(".btns");
+        const figures = document.querySelectorAll(".figure");
 
-        btns.forEach (btn => {
-            btn.addEventListener ("click", function () {
-                const categoryId = btn.dataset.category;
-                console.log(categoryId);
-                const projectsFiltres = projects.filter (function (project) {
-                    return project.categoryId === parseInt(categoryId);
-                });
-                console.log(projectsFiltres);
+        boutons.forEach (bouton => {
+            bouton.addEventListener ("click", () => {
+            const clickCategoryId = bouton.getAttribute("data-categoryId");
+            figures.forEach (figure => {
+                const figureCategoryId = figure.getAttribute("data-categoryId");
+                if (figureCategoryId === clickCategoryId) {
+                    figure.classList.remove("hidden");
+                } else {
+                    figure.classList.add("hidden");
+                }
+            });
             });
         });
-
-        */
 
     })
     .catch(error => {
         console.error ("Erreur de fetch pour les boutons", error);
     });
-
-
-    /*
-// gestion du filtrage des boutons : en Test (ne fonctionne pas actuellement)
-const btns = document.querySelectorAll(".btns");
-
-btns.forEach (btn => {
-    btn.addEventListener ("click", function () {
-        const categoryId = btn.dataset.category;
-        console.log(categoryId);
-        const projectsFiltres = projects.filter (function (project) {
-            return project.categoryId === parseInt(categoryId);
-        });
-        console.log(projectsFiltres);
-    });
-});
-
-*/
