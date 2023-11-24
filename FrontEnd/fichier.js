@@ -58,6 +58,7 @@ fetch (apiCategories)
         let btnTous = document.createElement("button");
         btnTous.innerHTML = "Tous";
         btnTous.classList.add("btns");
+        btnTous.classList.add("tous");
         divBtnFiltres.appendChild(btnTous); 
         for (const categorie of categories) {
             const btn = document.createElement("button");
@@ -67,21 +68,28 @@ fetch (apiCategories)
             divBtnFiltres.appendChild(btn);
         }
         
-        // gestion du filtrage des boutons : ne fonctionne pas encore
+        // gestion du filtrage des boutons
         const boutons = document.querySelectorAll(".btns");
         const figures = document.querySelectorAll(".figure");
 
         boutons.forEach (bouton => {
             bouton.addEventListener ("click", () => {
-            const clickCategoryId = bouton.getAttribute("data-categoryId");
-            figures.forEach (figure => {
-                const figureCategoryId = figure.getAttribute("data-categoryId");
-                if (figureCategoryId === clickCategoryId) {
+            const isTousBtn = bouton.classList.contains("tous");
+            if (isTousBtn) {
+                figures.forEach (figure => {
                     figure.classList.remove("hidden");
-                } else {
-                    figure.classList.add("hidden");
-                }
-            });
+                });
+            } else {
+                const clickCategoryId = bouton.getAttribute("data-categoryId");
+                figures.forEach (figure => {
+                    const figureCategoryId = figure.getAttribute("data-categoryId");
+                    if (figureCategoryId === clickCategoryId) {
+                        figure.classList.remove("hidden");
+                    } else {
+                        figure.classList.add("hidden");
+                    }
+                });
+            } 
             });
         });
 
