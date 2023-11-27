@@ -11,8 +11,7 @@ fetch (apiUrl)
     })
     .then (projects => {
         console.log(projects);
-        for (const index in projects) {
-            let project = projects[index];
+        for (let project of projects) {
             let figure = document.createElement("figure");
             gallery.appendChild(figure);
 
@@ -55,11 +54,10 @@ fetch (apiCategories)
     })
     .then (categories => {
         console.log(categories);
-        let btnTous = document.createElement("button");
-        btnTous.innerHTML = "Tous";
-        btnTous.classList.add("btns");
-        btnTous.classList.add("tous");
-        divBtnFiltres.appendChild(btnTous); 
+        categories.unshift({
+            "id":0,
+            "name": "Tous"
+        })
         for (const categorie of categories) {
             const btn = document.createElement("button");
             btn.textContent = categorie.name;
@@ -74,22 +72,23 @@ fetch (apiCategories)
 
         boutons.forEach (bouton => {
             bouton.addEventListener ("click", () => {
-            const isTousBtn = bouton.classList.contains("tous");
-            if (isTousBtn) {
-                figures.forEach (figure => {
-                    figure.classList.remove("hidden");
-                });
-            } else {
+                const btnCategorieId = bouton.getAttribute("data-categoryId");
+                if (btnCategorieId == "0") {
+                    figures.forEach (figure => {
+                        figure.classList.remove("hidden");
+                    });
+                    return
+                } 
+                    
                 const clickCategoryId = bouton.getAttribute("data-categoryId");
                 figures.forEach (figure => {
                     const figureCategoryId = figure.getAttribute("data-categoryId");
-                    if (figureCategoryId === clickCategoryId) {
-                        figure.classList.remove("hidden");
-                    } else {
+                    figure.classList.remove("hidden");
+                    if (figureCategoryId !== clickCategoryId) {
                         figure.classList.add("hidden");
                     }
                 });
-            } 
+            
             });
         });
 
