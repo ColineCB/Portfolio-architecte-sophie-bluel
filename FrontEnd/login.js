@@ -4,13 +4,18 @@ const apiUrl = "http://localhost:5678/users/login";
 document.getElementById("loginButton").addEventListener("click", function() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4"
+
+    /* Vérification basique du formulaire */ 
+    if (!email || !password) {
+        alert("Veuillez remplir tous les champs du formulaire.");
+        return;
+    }
+
     if (email === "exemple@email.com" && password === "mot de passe") {
         fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify({ email, password })
         })
@@ -21,6 +26,7 @@ document.getElementById("loginButton").addEventListener("click", function() {
             return response.json();
         })
         .then(data => {
+            localStorage.setItem('token', data.token);
             window.location.href = "index.html";
         })
         .catch(error => {
