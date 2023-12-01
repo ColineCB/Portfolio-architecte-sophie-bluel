@@ -264,12 +264,10 @@ footer nav ul {
 
 /* style footer page login */
 
-/* problème avec la position du footer : devrait être tout à droite de l'écran */ 
-
-#footer-login {
+#mentions-legales {
 	position: fixed;
 	margin-bottom: 1em;
 	bottom: 0;
-	right: 0;
-	width: 100%;
+	text-align: right;
+	width: 70%;
   }

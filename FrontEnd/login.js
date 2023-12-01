@@ -1,9 +1,11 @@
-const apiUrl = "http://localhost:5678/users/login";
+const apiUrl = "http://localhost:5678/api/users/login";
 
 // Création de l'événement click pour déclencher la vérification des champs du formulaire
-document.getElementById("loginButton").addEventListener("click", function() {
+document.getElementById("loginButton").addEventListener("click", function(event) {
+    event.preventDefault();
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
+    console.log(email, password);
 
     /* Vérification basique du formulaire */ 
     if (!email || !password) {
@@ -11,7 +13,7 @@ document.getElementById("loginButton").addEventListener("click", function() {
         return;
     }
 
-    if (email === "exemple@email.com" && password === "mot de passe") {
+    if (1===1) {
         fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -20,6 +22,7 @@ document.getElementById("loginButton").addEventListener("click", function() {
             body: JSON.stringify({ email, password })
         })
         .then(response => {
+            console.log(response);
             if (!response.ok) {
                 throw new Error("La requête a échoué");
             }
@@ -30,7 +33,7 @@ document.getElementById("loginButton").addEventListener("click", function() {
             window.location.href = "index.html";
         })
         .catch(error => {
-            console.error('Erreur lors de la validation du formulaire', error);
+            console.error('Problème', error);
             alert("Erreur lors de la validation du formulaire");
         });
     } else {
