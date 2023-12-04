@@ -60,12 +60,48 @@ body {
 	font-size: 14px;
 }
 
-.fenetre_edition {
-	/* display: none; */
-	background-color: red;
-	
+/* ajout du bandeau mode édition */ 
 
+#bandeau_edition {
+	background-color: black;
+	color: white;
+	display: flex;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	justify-content: center;
 }
+
+#bandeau_edition p {
+	margin-top: 5px;
+	margin-left: 5px
+}
+
+.mes_projets_mode_edition {
+	display:flex;
+	justify-content: center;
+}
+
+.mes_projets_mode_edition h2 {
+	margin-top: 10px;
+	margin-right: 50px;
+}
+
+#bouton_edition {
+	display: flex;
+	padding: 5px 5px 0px 5px;
+	height: 30px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	background-color: white;
+	border: none;
+}
+
+#bouton_edition p {
+	padding-top: 5px;
+	padding-bottom: 1px;
+}
+
+/* fin du bandeau mode édition */ 
 
 header {
 	display: flex;
@@ -112,7 +148,7 @@ nav li {
 
 /* modification du style pour que les liens aient le bon aspect visuel */
 
-li a:visited {
+li a, li a:visited {
 	color: black;
 }
 
@@ -158,7 +194,7 @@ li a {
 
 /* ajout de la div contenant les boutons filtres et des boutons eux-mêmes */ 
 
-.div-Btn-Filtres {
+#div_Btn_Filtres {
 	display: flex;
 	justify-content: center;
 }
@@ -180,8 +216,6 @@ li a {
 	color: white;
 }
 
-/* fin de l'ajout perso */
-
 /* début gestion galerie */ 
 
 .gallery {
@@ -201,11 +235,16 @@ li a {
 	display: block;
 }
 
+/* ajout des classes permettant d'enlever / ajouter des éléments */
+
 .hidden {
-	display:none; 
+	display:none !important; 
 }
 
-/* fin de la gestion de la gallerie */ 
+.visibility_hidden {
+	visibility: hidden;
+}
+
 
 #contact, #log-in {
 width: 50%;

@@ -9,19 +9,21 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/modale.css">
 </head>
 <body>
-<div id="fenetre_edition">
-	<img src="/assets/icons/icone_edition.png" alt="icone mode édition">
+<div id="bandeau_edition" class="hidden">
+	<img src="./assets/icons/icone_edition_black.png" alt="icone mode édition du bandeau">
 	<p>Mode édition</p>
 </div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
-			<li><a href="#titre-mes-projets">projets</a></li>
-			<li>contact</li>
-			<li><a href="login.html">login</a></li>
+			<li><a href="#titre_mes_projets">projets</a></li>
+			<li><a href="#contact">contact</a></li>
+			<li><a href="login.html" id="bouton_login">login</a></li>
+			<li><a href="index.html" id="bouton_logout" class="hidden">logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -39,7 +41,28 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2 class="titre-mes-projets" id="titre-mes-projets">Mes Projets</h2>
+		<div class="mes_projets_mode_edition">
+			<h2 class="titre_mes_projets" id="titre_mes_projets">Mes Projets</h2>
+			<a href="#modale_gallerie">
+				<button id="bouton_edition" class="hidden"> 
+					
+					<img src="assets/icons/icone_edition_white.png" alt="icone mode édition de la modale">
+					<p class="p_mode_edition">modifier</p>
+				</button>
+			</a>
+		</div>
+
+	<!-- création de la boite modale -->
+
+	<aside id="modale_galerie" class="modale" aria-hidden="true" role="dialog" aria-labelledby="titre_modale">
+		<div class="boite_modale">
+			<button id="bouton_fermeture_modale"><img src="assets/icons/icone_croix.png"></button>
+			<h3 id="titre_modale">Galerie photo</h3>
+			<div id="boite_projets_modale"></div>
+			<button class="bouton_modale">Ajouter une photo</button>
+		</div>
+	</aside>
+
 		<div class="gallery"> <!--
 			<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
@@ -111,4 +134,5 @@
 </footer>
 </body>
 <script src="index.js"></script>
+<script src="modale.js"></script>
 </html>
