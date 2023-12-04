@@ -60,6 +60,13 @@ body {
 	font-size: 14px;
 }
 
+.fenetre_edition {
+	/* display: none; */
+	background-color: red;
+	
+
+}
+
 header {
 	display: flex;
 	justify-content: space-between;

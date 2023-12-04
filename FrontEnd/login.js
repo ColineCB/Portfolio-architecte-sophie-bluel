@@ -13,30 +13,27 @@ document.getElementById("loginButton").addEventListener("click", function(event)
         return;
     }
 
-    if (1===1) {
-        fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password })
-        })
-        .then(response => {
-            console.log(response);
-            if (!response.ok) {
-                throw new Error("La requête a échoué");
-            }
-            return response.json();
-        })
-        .then(data => {
-            localStorage.setItem('token', data.token);
-            window.location.href = "index.html";
-        })
-        .catch(error => {
-            console.error('Problème', error);
-            alert("Erreur lors de la validation du formulaire");
-        });
-    } else {
-        alert("Email ou mot de passe incorrect !");
-    }
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password })
+    })
+    .then(response => {
+        console.log(response);
+        if (!response.ok) {
+            throw new Error("La requête a échoué");
+        }
+        return response.json();
+    })
+    .then(data => {
+        localStorage.setItem('token', data.token);
+        window.location.href = "index.html";
+    })
+    .catch(error => {
+        console.error('Problème', error);
+        alert("Utilisateur mot de passe incorrect");
+    });
+
 });
