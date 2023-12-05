@@ -22,6 +22,13 @@ fetch (apiUrl)
             img.src = project.imageUrl;
             figure.appendChild(img);
 
+            // copie de l'élément img pour la boîte modale
+            let imgCopy = img.cloneNode(true);
+
+            // récupération des images pour la boite modale
+            let boiteProjetsModale = document.getElementById("boite_projets_modale");
+            boiteProjetsModale.appendChild(imgCopy);
+
             let figcaption = document.createElement("figcaption");
             figcaption.textContent = project.title;
             figure.appendChild(figcaption);

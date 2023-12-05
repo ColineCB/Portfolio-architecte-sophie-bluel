@@ -15,11 +15,8 @@
 .boite_modale {
 	display: flex;
 	flex-direction: column;
-	/* overflow: auto; */
 	width: 630px;
 	height: 688px;
-	/* max-width: calc(100vw - 20 px);
-	max-height: calc(100vh - 20 px); */
 	padding: 20px;
 	background-color: white;
 	border-radius: 10px;
@@ -47,6 +44,9 @@
 	align-self: center;
 	border-bottom: #1D6154 1px solid;
 	margin-bottom: 40px;
+	display: grid;
+	grid-template-columns: 76px 76px 76px 76px 76px;
+	gap: 12.2px;
 }
 
 .bouton_modale {
@@ -60,4 +60,11 @@
 	width: 237px;
 	height: 36px;
 	align-self: center;
+}
+
+/* affichage des projets dans la boite modale */ 
+
+#boite_projets_modale img {
+	width: 76px;
+	height: 102.5px;
 }
