@@ -43,9 +43,8 @@
 	<section id="portfolio">
 		<div class="mes_projets_mode_edition">
 			<h2 class="titre_mes_projets" id="titre_mes_projets">Mes Projets</h2>
-			<a href="#modale_gallerie">
+			<a href="#modale_galerie" class="js_modale">
 				<button id="bouton_edition" class="hidden"> 
-					
 					<img src="assets/icons/icone_edition_white.png" alt="icone mode édition de la modale">
 					<p class="p_mode_edition">modifier</p>
 				</button>
@@ -53,10 +52,9 @@
 		</div>
 
 	<!-- création de la boite modale -->
-
-	<aside id="modale_galerie" class="modale" aria-hidden="true" role="dialog" aria-labelledby="titre_modale">
-		<div class="boite_modale">
-			<button id="bouton_fermeture_modale"><img src="assets/icons/icone_croix.png"></button>
+	<aside id="modale_galerie" class="modale hidden" aria-hidden="true" role="dialog" aria-labelledby="titre_modale">
+		<div class="boite_modale js_modale_stop">
+			<button id="bouton_fermeture_modale" class="js_fermeture_modale"><img src="assets/icons/icone_croix.png"></button>
 			<h3 id="titre_modale">Galerie photo</h3>
 			<div id="boite_projets_modale"></div>
 			<button class="bouton_modale">Ajouter une photo</button>
