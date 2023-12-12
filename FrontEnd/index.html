@@ -51,17 +51,46 @@
 			</a>
 		</div>
 
-	<!-- création de la boite modale -->
+	<!-- création de la boite modale d'affichage des projets -->
 	<aside id="modale_galerie" class="modale hidden" aria-hidden="true" role="dialog" aria-labelledby="titre_modale">
 		<div class="boite_modale js_modale_stop">
-			<button id="bouton_fermeture_modale" class="js_fermeture_modale"><img src="assets/icons/icone_croix.png"></button>
+			<button id="bouton_fermeture_modale_galerie" class="js_fermeture_modale"><img src="assets/icons/icone_croix.png"></button>
 			<h3 id="titre_modale">Galerie photo</h3>
 			<div id="boite_projets_modale"></div>
 			<button class="bouton_modale">Ajouter une photo</button>
 		</div>
 	</aside>
 
-		<div class="gallery"> <!--
+	<!-- création de la boite modale d'ajout d'un nouveau projet -->
+	<!-- 
+	<aside id="modale_ajout_projet" class="modale hidden" aria-hidden="true" role="dialog" aria-labelledby="titre_modale2">
+		<div class="boite_modale js_modale_stop">
+			<div id="boite_boutons_modale">
+				<button id="bouton_retour_modale_galerie" class="js_fermeture_modale"><img src="assets/icons/icone_fleche.png"></button>
+				<button id="bouton_fermeture_modale_ajout" class="js_fermeture_modale"><img src="assets/icons/icone_croix.png"></button>
+			</div>
+			<h3 id="titre_modale2">Ajout photo</h3>
+			<div id="contenu_modale_ajout_photo">
+				<div id="boite_ajout_photo">
+					<img src="./assets/icons/image.png" alt="logo ajout d'une nouvelle image">
+					<button id="bouton_ajouter_photo">+ Ajouter photo</button>
+					<p>jpg. png : 4mo max</p>
+				</div>
+				<form method="get" action="post">
+					<label for="titre">Titre</label> : <input type="text" name="titre" id="titre">
+					<label for="categorie">Catégorie</label><br>
+					<select name="categorie" id="categorie">
+						<option value="objet">Objet</option>
+						<option value="appartement">Appartement</option>
+						<option value="hotel ou restaurant">Hôtel ou restaurant</option>
+					</select>
+				</form>
+			</div>
+			<button class="bouton_valider">Valider</button>
+	</aside>
+	-->
+
+		<div class="galerie"> <!--
 			<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
 				<figcaption>Abajour Tahina</figcaption>

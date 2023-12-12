@@ -12,7 +12,7 @@ const ouvertureModale = function (e) {
         modale.setAttribute("aria-hidden", false);
         modale.setAttribute("aria-modal", true);
         modale.addEventListener("click", fermetureModale);
-        modale.querySelector("#bouton_fermeture_modale").addEventListener("click", fermetureModale);
+        modale.querySelector("#bouton_fermeture_modale_galerie").addEventListener("click", fermetureModale);
         modale.querySelector(".js_modale_stop").addEventListener("click", stopPropagation);
     };
 };
@@ -24,7 +24,7 @@ const fermetureModale = function (e) {
     modale.setAttribute("aria-hidden", true);
     modale.removeAttribute("aria-modal");
     modale.removeEventListener("click", fermetureModale);
-    modale.querySelector("#bouton_fermeture_modale").removeEventListener("click", fermetureModale);
+    modale.querySelector("#bouton_fermeture_modale_galerie").removeEventListener("click", fermetureModale);
     modale.querySelector(".js_modale_stop").removeEventListener("click", stopPropagation);
 };
 
@@ -37,3 +37,18 @@ window.addEventListener("keydown", function (e) {
         fermetureModale(e);
     };
 });
+
+// ajout de la fonction de suppression des projets via la boite modale galerie
+
+
+    
+   
+        
+
+
+
+ // récupération de tous les éléments ayant la classe .div_projet_modale_galerie
+// let projetModaleGalerieListe = document.querySelectorAll(".div_projet_modale_galerie");
+
+//quels sont les paramètres js d'un event liés à un eventlistener 
+// à partir de ce paramètre, comment récupérer l'élément html d'origine 

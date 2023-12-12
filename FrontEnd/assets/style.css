@@ -218,7 +218,7 @@ li a {
 
 /* début gestion galerie */ 
 
-.gallery {
+.galerie {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -226,7 +226,7 @@ li a {
 	grid-row-gap: 20px;
 }
 
-.gallery img {
+.galerie img {
 	width: 100%;
 
 }

@@ -1,4 +1,4 @@
-const gallery = document.querySelector(".gallery");
+const galerie = document.querySelector(".galerie");
 const apiUrl = "http://localhost:5678/api/works";
 
 // affichage dynamique des projets
@@ -10,28 +10,78 @@ fetch (apiUrl)
         return response.json();
     })
     .then (projects => {
-        console.log(projects);
         for (let project of projects) {
-            let figure = document.createElement("figure");
-            gallery.appendChild(figure);
 
+            // création des figures de la galerie : chaque figure contient une image et une figcaption 
+            let figure = document.createElement("figure");
+            galerie.appendChild(figure);
             figure.classList.add("figure");
+            figure.setAttribute("data-id", project.id);
             figure.setAttribute("data-categoryId", project.categoryId);
 
             let img = document.createElement("img");
             img.src = project.imageUrl;
             figure.appendChild(img);
 
-            // copie de l'élément img pour la boîte modale
-            let imgCopy = img.cloneNode(true);
-
-            // récupération des images pour la boite modale
-            let boiteProjetsModale = document.getElementById("boite_projets_modale");
-            boiteProjetsModale.appendChild(imgCopy);
-
             let figcaption = document.createElement("figcaption");
             figcaption.textContent = project.title;
             figure.appendChild(figcaption);
+
+            // création div pour chaque images de la boîte modale galerie
+            let projetModaleGalerie = document.createElement("div");
+            projetModaleGalerie.setAttribute("data-id", project.id);
+            projetModaleGalerie.classList.add("div_projet_modale_galerie");
+            let boiteProjetModale = document.getElementById ("boite_projets_modale");
+            boiteProjetModale.appendChild(projetModaleGalerie);
+
+            // copie de l'élément img pour la boîte modale galerie
+            let imgCopy = img.cloneNode(true);
+            imgCopy.classList.add("images_modale"); 
+            projetModaleGalerie.appendChild(imgCopy);
+
+            // création du bouton de suppression des projets de la boîte modale galerie
+            let boutonSuppression = document.createElement("button");
+            boutonSuppression.setAttribute("data-id", project.id);
+            boutonSuppression.classList.add("bouton_suppression");
+            projetModaleGalerie.appendChild(boutonSuppression);
+            
+            // fonction de suppression des projets
+            function supprimerProjet(id) {
+                const divASupprimer = document.getElementById(`boite_projets_modale${id}`);
+                if (divASupprimer) {
+                    divASupprimer.classList.add("hidden");
+                }
+            }
+
+            // suppression des projets au clique sur les boutonSuppression
+            boutonSuppression.addEventListener("click", function(e) {
+                if (e.target.classList.contains("bouton_suppression")) {
+                    const id = e.target.getAttribute("data-id");
+                    const apiSuppression = `http://localhost:5678/api/works/${id}`;
+                    const token = localStorage.getItem('token');
+
+                    fetch(apiSuppression, {
+                        method: 'DELETE',
+                        headers: { 
+                            'Authorization': `Bearer ${token}`
+                        },
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("La requête a échoué");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        supprimerProjet(id);
+                        
+                    })
+                    .catch(error => {
+                        console.error('Erreur de fetch pour la suppression des projets', error);
+                    });
+                }
+            });
+
         }
     })
     .catch(error => {
@@ -61,7 +111,6 @@ fetch (apiCategories)
         return response.json();
     })
     .then (categories => {
-        console.log(categories);
         categories.unshift({
             "id":0,
             "name": "Tous"

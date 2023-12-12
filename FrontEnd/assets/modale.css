@@ -22,7 +22,7 @@
 	border-radius: 10px;
 }
 
-#bouton_fermeture_modale {
+#bouton_fermeture_modale_galerie {
 	width: 5%;
 	align-self: flex-end;
 	margin-top: 20px;
@@ -35,19 +35,47 @@
 #titre_modale {
 	text-align: center;
 	font-size: 25px;
-	margin-bottom: 40px;
+	margin-bottom: 50px;
 }
 
 #boite_projets_modale {
 	width: 70%;
-	height: 450px;
+	height: 400px;
 	align-self: center;
 	border-bottom: #1D6154 1px solid;
 	margin-bottom: 40px;
+	padding-bottom: 50px;
 	display: grid;
 	grid-template-columns: 76px 76px 76px 76px 76px;
 	gap: 12.2px;
 }
+
+/* affichage des projets dans la boite modale */ 
+
+#boite_projets_modale img {
+	width: 76px;
+	height: 102.5px;
+}
+
+/* gestion des icones poubelle */
+
+.div_projet_modale_galerie {
+	position: relative;
+}
+
+.bouton_suppression {
+	content: '';
+	background-image: url("icons/icone_poubelle.png");
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	border-radius: 10%;
+}
+
+/* gestion du bouton "ajouter une photo" de la modale galerie */ 
 
 .bouton_modale {
 	font-family: 'Syne';
@@ -62,9 +90,3 @@
 	align-self: center;
 }
 
-/* affichage des projets dans la boite modale */ 
-
-#boite_projets_modale img {
-	width: 76px;
-	height: 102.5px;
-}
